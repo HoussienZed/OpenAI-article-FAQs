@@ -5,18 +5,32 @@
     require '../migrations/createUserTable.php';
     require '../migrations/createQuestionsTable.php';
 
-    class InsertUser {
+    class Insert {
         public static function insertUser ($conn, $fullName, $email, $password) {
 
             $query = $conn->prepare('INSERT INTO users (fullName, email, password) VALUES (?, ?, ?)');
-            $query->bind_params('sss', $fullName, $email, $password);
+            $query->bind_param('sss', $fullName, $email, $password);
 
             if($query->execute()) {
-                return ['status' => 'user added correctly'];
+                echo 'user added correctly';
             } else {
-                return ['status' => 'failed add user'];
+                echo 'failed add user';
+            }
+        }
+
+        public static function insertQuestion ($conn, $question, $answer){
+            $query = $conn->prepare('INSERT INTO questions (question, answer) VALUES (?, ?)');
+            $query->bind_param('ss', $question, $answer);
+
+            if($query->execute()) {
+                echo 'question added successfully';
+            } else {
+                echo 'failed add question';
             }
         }
     }
+
+    Insert::insertUser($conn, 'houssien', '1@2.3', 'hashed password');
+    Insert::insertQuestion($conn, '1st question', '1st answer');
 
 ?>
