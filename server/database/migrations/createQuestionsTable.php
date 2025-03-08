@@ -17,6 +17,6 @@
         }
     }
 
-    QuestionsTable::createQuestionsTable($conn);
-
+/*     QuestionsTable::createQuestionsTable($conn);
+ */
 ?>

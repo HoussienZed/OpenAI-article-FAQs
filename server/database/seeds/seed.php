@@ -2,9 +2,6 @@
 
     $conn = require '../../config/connection.php';
 
-    require '../migrations/createUserTable.php';
-    require '../migrations/createQuestionsTable.php';
-
     class Insert {
         public static function insertUser ($conn, $fullName, $email, $password) {
 
@@ -30,7 +27,7 @@
         }
     }
 
-    Insert::insertUser($conn, 'houssien', '1@2.3', 'hashed password');
-    Insert::insertQuestion($conn, '1st question', '1st answer');
+    /* Insert::insertUser($conn, 'houssien', '1@2.3', 'hashed password');
+    Insert::insertQuestion($conn, '1st question', '1st answer'); */
 
 ?>
