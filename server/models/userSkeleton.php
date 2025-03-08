@@ -11,8 +11,8 @@
             $this->password = $password;
         }
 
-        public static function createSkeleton($fullName, $email, $password) {
-            return new self($fullName, $email, $password);
+        public static function createUserSkeleton($fullName, $email, $password) {
+            return new self($fullName, $email, $password); // object returned
         }
     }
 
