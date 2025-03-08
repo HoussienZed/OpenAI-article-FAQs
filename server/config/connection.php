@@ -1,14 +1,16 @@
 <?php
 
-    $host = "localhost:3307";
-    $user = "root";
-    $password = "";
-    $name = "FAQs";
+    $host = 'localhost:3307';
+    $user = 'root';
+    $password = '';
+    $name = 'FAQs';
 
-    $mysqli = new mysqli($host, $user, $password, $name);
+    $conn = new mysqli($host, $user, $password, $name);
 
-    if($mysqli->connect_error) {
-        die ("Connected");
+    if($conn->connect_error) {
+        die ('Connected');
     }
+
+    return $conn;
 
 ?>
