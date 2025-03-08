@@ -29,9 +29,20 @@
             $creatUserQuery->bind_param('sss', $fullName, $email, $hashedPassword);
             
             if($creatUserQuery->execute()) {
-                return ['status'=>'user entered successfully'];
+                return ['status'=>'success', 'message'=>'user added successfully'];
             }
+        }
 
+        public static function deleteUSer($conn, $email) {
+
+            $deleteEmailQuery = $conn->prepare('DELETE FROM users WHERE email = ?');
+            $deleteEmailQuery->bind_param('s', $email);
+            
+            if($deleteEmailQuery->execute) {
+                return ['status'=>'success', 'message'=>'user deleted successfully'];
+            } else {
+                return ['status'=>'error', 'message'=>'cannot delete user'];
+            }
         }
     } 
 
