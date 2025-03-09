@@ -35,18 +35,22 @@
         public static function getQuestion($conn, $searchedQuestion) {
 
             $getQuestionQuery = $conn->prepare('SELECT * FROM questions WHERE question LIKE ?');
-            $getQuestionQuery->bind_param('s', $searchedQuestion);
+            $searchedPhrase = '%' . $searchedQuestion . '%';
+            $getQuestionQuery->bind_param('s', $searchedPhrase);
             $getQuestionQuery->execute();
 
             $result = $getQuestionQuery->get_result();
 
             $response = [];
 
-            while($question = $result->fetch_assoc()) {
-                $response = [$question];
+            if($result->num_rows > 0) {
+                while($question = $result->fetch_assoc()) {
+                    $response = [$question];
+                }
+                return $response;
+            } else {
+                return ['result'=>'No related question found'];
             }
-
-            return $response;
         }
     }
 
