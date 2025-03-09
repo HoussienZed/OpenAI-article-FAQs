@@ -34,6 +34,25 @@
             }
         }
 
+        public static function signIn($conn, $email, $password) {
+
+            $query = $conn->prepare('SELECT * FROM users WHERE email = ?');
+            $query->bind_param('s', $email);
+            $query->execute();
+
+            $result = $query->get_result();
+            $result->fetch_assoc();
+            $userHashedPassword = $result['password'];
+
+            $enteredHashedPassword = hash('sha256', $password);
+
+            if($userHashedPassword === $enteredHashedPassword) {
+                return ['status'=>'success', 'message'=>'User logged in successfully'];
+            } else {
+                return ['status'=>'error', 'message'=>'Email and password dont match'];
+            }
+        }
+
         public static function deleteUser($conn, $email) {
 
             $deleteEmailQuery = $conn->prepare('DELETE FROM users WHERE email = ?');
