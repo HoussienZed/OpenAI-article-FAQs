@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const formData = new FormData(event.target);
 
-            const response = await axios.post('http://localhost/article_FAQs/server/apis/v1/signup.php',
+            const response = await axios.post('http://13.39.112.176/article_FAQs/server/apis/v1/signup.php',
                 formData, {
                     headers: {
                         'Content-Type' : 'application/json'
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(result);
 
             if (result.status === 'success'){
-                window.location.href = 'http://localhost/article_FAQs/client/index.html'
+                window.location.href = 'http://13.39.112.176/article_FAQs/client/index.html'
             } else {
                 console.log(result.message);
                 signUpAlert.textContent = result.message;
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const formData = new FormData(event.target);
 
-            const response = await axios.post('http://localhost/article_FAQs/server/apis/v1/signin.php',
+            const response = await axios.post('http://13.39.112.176/article_FAQs/server/apis/v1/signin.php',
                 formData, {
                     headers: {
                         'Content-Type' : 'multipart/form-data'
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(result);
 
             if(result.status === 'success') {
-                window.location.href = 'http://localhost/article_FAQs/client/home.html'
+                window.location.href = 'http://13.39.112.176/article_FAQs/client/home.html'
             } else {
                 console.log(result.message);
                 signUpAlert.textContent = result.message;
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const formData = new FormData(event.target);
 
-            const response = await axios.post('http://localhost/article_FAQs/server/apis/v1/addQuestion.php',
+            const response = await axios.post('http://13.39.112.176/article_FAQs/server/apis/v1/addQuestion.php',
                 formData , {
                     headers: {
                         'Content-Type' : 'multipart/form-data'
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(result);
 
             if (result.status === 'success'){
-                window.location.href = 'http://localhost/article_FAQs/client/home.html';
+                window.location.href = 'http://13.39.112.176/article_FAQs/client/home.html';
             } else {
                 console.log(result.message);
                 signUpAlert.textContent = result.message;

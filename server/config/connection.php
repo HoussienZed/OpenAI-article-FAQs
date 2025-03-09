@@ -1,9 +1,9 @@
 <?php
 
     $host = 'localhost:3307';
-    $user = 'root';
-    $password = '';
-    $name = 'FAQs';
+    $user = 'hsien';
+    $password = '123456789';
+    $name = 'faqs';
 
     $conn = new mysqli($host, $user, $password, $name);
 
