@@ -20,7 +20,7 @@
             }
         }
 
-        public static function deleteQuestion($conn, $question) {
+        /* public static function deleteQuestion($conn, $question) {
 
             $deleteQuestionQuery = $conn->prepare('DELETE FROM questions WHERE question = ?');
             $deleteQuestionQuery->bind_param('s', $question);
@@ -30,7 +30,7 @@
             } else {
                 return['status'=>'error', 'message'=>'Question cannot be deleted'];
             }
-        }
+        } */
 
         public static function getQuestion($conn, $searchedQuestion) {
 
