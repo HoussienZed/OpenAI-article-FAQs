@@ -31,6 +31,10 @@
 
         public static function signIn($conn, $email, $password) {
 
+            if (!isset($_POST['email']) || !isset($_POST['password'])) {
+                return ['status' => 'error', 'message' => 'Email or password not provided'];
+            }
+
             $query = $conn->prepare('SELECT * FROM users WHERE email = ?');
             $query->bind_param('s', $email);
             $query->execute();
@@ -39,9 +43,7 @@
             $user = $result->fetch_assoc();
             $userHashedPassword = $user['password'];
 
-            $enteredHashedPassword = hash('sha256', $password);
-
-            if($userHashedPassword === $enteredHashedPassword) {
+            if(password_verify($password, $userHashedPassword)) {
                 return ['status'=>'success', 'message'=>'User logged in successfully'];
             } else {
                 return ['status'=>'error', 'message'=>'Email and password dont match'];

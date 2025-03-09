@@ -22,9 +22,9 @@
             $query->bind_param('ss', $question, $answer);
 
             if($query->execute()) {
-                echo 'question added successfully';
+                return 'question added successfully';
             } else {
-                echo 'failed add question';
+                return 'failed add question';
             }
         }
     }

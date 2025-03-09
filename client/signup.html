@@ -6,36 +6,38 @@
     <title>FAQs Sign Up</title>
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
-<body>
+<body id="signUp">
     <div class="big-container">
         <div class="container">
             <div class="title">
                 <h1>Create Account</h1>
             </div>
 
-            <div class="signin-alert">
-                <h3>Can't sign up, data invalid</h3>
+            <div class="signin-alert" id="signUpAlertContainer">
+                <h3 id="signUpAlert">Can't sign up, data invalid</h3>
             </div>
             
             <div>
                 <div class="signInForm">
                     <form method="post">
-                        <input type="text" name="fullName" id="" placeholder="Full name">
+                        <input type="text" name="fullName" placeholder="Full name">
                         <br>
                         <input type="text" name="email" placeholder="Email">
                         <br>
                         <input type="password" name="password" placeholder="Password">
                         <br>
-                        <input type="password" name="reapeatedPassword" id="" placeholder="Repeat your password">
-                    </form>
-                </div>
+                        <input type="password" name="repeatedPassword" placeholder="Repeat your password">
+                    
 
-                <div class="buttons-container">
-                    <button type="submit"><a href="./index.html">Sign Up</a></button>
+                        <div class="buttons-container">
+                            <button type="submit">Sign Up</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./Js/main.js"></script>
 </body>
 </html>

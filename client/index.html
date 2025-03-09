@@ -6,7 +6,7 @@
     <title>FAQs Sign In</title>
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
-<body>
+<body id="signIn">
     <div class="big-container">
         <div class="container">
             <div class="title">
@@ -20,19 +20,22 @@
             
             <div>
                 <div class="signInForm">
-                    <form method="post">
+                    <form method="post" id="signInForm">
                         <input type="text" name="email" placeholder="Email">
                         <br>
                         <input type="password" name="password" placeholder="Password">
+                        
+                        <div class="buttons-container">
+                            <button type="submit">Sign In</button>
+                            <button type="submit"><a href="./signup.html">Sign Up</a></button>
+                        </div>
                     </form>
                 </div>
 
-                <div class="buttons-container">
-                    <button type="submit"><a href="./home.html">Sign In</a></button>
-                    <button type="submit"><a href="./signup.html">Sign Up</a></button>
-                </div>
+                
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="./Js/main.js"></script>
 </body>
 </html>

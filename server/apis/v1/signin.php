@@ -15,10 +15,11 @@
     $user = userSkeleton::createUserSkeleton(null, $email, $password);
     $result = User::signIn($conn, $email, $password);
 
-    /* if($result['status'] === 'success') {
-        
-    } */
-
-    echo json_encode($result);
+    if ($result['status'] === 'success') {    
+        $response = Insert::insertUser($conn, $fullName, $email, $password);
+        echo json_encode(['status'=>'success', 'message'=>'User signed up successfully']);
+    } else {
+        echo json_encode(['status'=>'error', 'message'=>$result['message']]);
+    }
 
 ?>
