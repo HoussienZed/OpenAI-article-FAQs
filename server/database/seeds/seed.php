@@ -4,14 +4,16 @@
 
     class Insert {
         public static function insertUser ($conn, $fullName, $email, $password) {
+            
+            $hashedPassword = hash('sha256', $password);
 
             $query = $conn->prepare('INSERT INTO users (fullName, email, password) VALUES (?, ?, ?)');
-            $query->bind_param('sss', $fullName, $email, $password);
+            $query->bind_param('sss', $fullName, $email, $hashedPassword);
 
             if($query->execute()) {
-                echo 'user added correctly';
+                return ['status'=>'success','message'=>'user added correctly'];
             } else {
-                echo 'failed add user';
+                return ['status'=>'error', 'message'=>'failed to add user'];
             }
         }
 

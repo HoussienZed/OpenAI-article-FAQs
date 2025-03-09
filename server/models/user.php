@@ -1,8 +1,10 @@
 <?php
 
-    require '../config/connection.php';
+    /* $conn = require '../config/connection.php'; */ //this path didnt work dont know why
+    $conn = require 'C:/xampp/htdocs/article_FAQs/server/config/connection.php';
 
-    class USer {
+
+    class User {
         
         public static function createUser($conn, $fullName, $email, $password, $repeatedPassword) {
             
@@ -20,17 +22,10 @@
 
             $user = $emailCheckQuery->get_result();
             
-            if($emailCheckQuery->num_rows > 0) {
+            if($user->num_rows > 0) {
                 return ['status'=>'error', 'message'=>'Email already exists'];
-            }
-
-            $hashedPassword = hash('sha256', $password);
-
-            $creatUserQuery = $conn->prepare('INSERT INTO users (fullName, email, password) VALUES (?, ?, ?)');
-            $creatUserQuery->bind_param('sss', $fullName, $email, $hashedPassword);
-            
-            if($creatUserQuery->execute()) {
-                return ['status'=>'success', 'message'=>'user added successfully'];
+            } else {
+                return ['status'=>'success', 'message'=>'Email is unique'];
             }
         }
 
@@ -41,8 +36,8 @@
             $query->execute();
 
             $result = $query->get_result();
-            $result->fetch_assoc();
-            $userHashedPassword = $result['password'];
+            $user = $result->fetch_assoc();
+            $userHashedPassword = $user['password'];
 
             $enteredHashedPassword = hash('sha256', $password);
 
@@ -58,7 +53,7 @@
             $deleteEmailQuery = $conn->prepare('DELETE FROM users WHERE email = ?');
             $deleteEmailQuery->bind_param('s', $email);
             
-            if($deleteEmailQuery->execute) {
+            if($deleteEmailQuery->execute()) {
                 return ['status'=>'success', 'message'=>'user deleted successfully'];
             } else {
                 return ['status'=>'error', 'message'=>'cannot delete user'];
@@ -91,7 +86,7 @@
             $hashedPassword = hash('sha256', $password);
             
             $editUserQuery = $conn->prepare('UPDATE users SET fullName = ?, email = ?, password = ? WHERE id = ?');
-            $editUserQuery->bind_param('sssi', $fullName, $email, $password, $userId);
+            $editUserQuery->bind_param('sssi', $fullName, $email, $hashedPassword, $userId);
             
             if($editUserQuery->execute()){
                 return ['status'=>'success', 'message'=>'User edited successfully'];

@@ -1,6 +1,7 @@
 <?php 
 
-    require '../config/connection/php';
+    /*  $conn = require '../config/connection.php'; */
+    $conn = require 'C:/xampp/htdocs/article_FAQs/server/config/connection.php';
     class Question {
         
         public static function createQuestion ($conn, $question, $answer) {
@@ -14,6 +15,8 @@
 
             if($addQuestionQuery->execute()) {
                 return ['status'=>'success', 'message'=>'question and answer added successfully'];
+            } else {
+                return ['status'=>'error', 'message'=>'Question was not added'];
             }
         }
 
