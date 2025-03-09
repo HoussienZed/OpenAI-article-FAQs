@@ -40,10 +40,16 @@
             $query->execute();
 
             $result = $query->get_result();
-            $user = $result->fetch_assoc();
-            $userHashedPassword = $user['password'];
+            if ($result->num_rows > 0) {
+                $user = $result->fetch_assoc();
+                $userHashedPassword = $user['password'];
+            } else {
+                return ['status'=>'error' ,'message'=>'User not found'];
+            }
 
-            if(password_verify($password, $userHashedPassword)) {
+            $hasheEnteredPassword = hash('sha256', $password);
+
+            if($hasheEnteredPassword === $userHashedPassword) {
                 return ['status'=>'success', 'message'=>'User logged in successfully'];
             } else {
                 return ['status'=>'error', 'message'=>'Email and password dont match'];
