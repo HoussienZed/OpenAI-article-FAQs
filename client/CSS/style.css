@@ -1,0 +1,87 @@
+:root {
+    --color-background: #E0FBFC;
+    --color-input-background: #C2DFE3;
+    --color-card-background: #253237;
+
+    --border-raduis: 10px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--color-background);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em;
+    /* height: 100%;
+    width: 100%; */
+}
+
+.title {
+    width: 50%;
+    text-align: center;
+}
+
+.signInForm {
+    background-color: var(--color-card-background);
+    padding: 0.5em;
+    border-radius: var(--border-raduis);
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+input {
+    background-color: var(--color-input-background);
+    height: 50px;
+    /* width: 100%; */
+    border-radius: var(--border-raduis);
+    padding: 0.5em;
+    margin: 0.5em;
+    border: none;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    outline: 0;
+    font-size: 1.5em;
+}
+
+.buttons-container {
+    /* width: 50%; */
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    gap: 0.5em;
+}
+
+button {
+    background-color: var(--color-card-background);
+    color: var(--color-input-background);
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1.5em;
+    border-radius: var(--border-raduis);
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+}
+
+.signin-alert {
+    background-color: rgb(240, 181, 181);
+    color: rgb(233, 56, 56);
+    font-size: 1em;
+    padding: 0.5em;
+    border-radius: var(--border-raduis);
+    opacity: 0.7;
+}
