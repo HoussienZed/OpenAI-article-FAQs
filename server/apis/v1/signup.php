@@ -15,7 +15,7 @@
     $password = $_POST['password'];
     $repeatedPassword = $_POST['repeatedPassword'];
 
-    $userRecord = UsersTable::createUsersTable($conn);
+    $usersTable = UsersTable::createUsersTable($conn);
     $userSkeleton = userSkeleton::createUserSkeleton($fullName, $email, $password);
     $user = User::createUser($conn, $fullName, $email, $password, $repeatedPassword);
 
