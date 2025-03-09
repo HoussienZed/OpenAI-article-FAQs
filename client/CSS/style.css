@@ -19,7 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column */;
-    background-color: var(--color-background);
+    background-color: var(--color-card-background);
     position: relative;
 }
 
@@ -45,6 +45,7 @@ body {
 .title {
     width: 50%;
     text-align: center;
+    color: var(--color-background);
 }
 
 .signInForm {
@@ -70,6 +71,21 @@ input {
     box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
     outline: 0;
     font-size: 1.5em;
+}
+
+textarea {
+    background-color: var(--color-input-background);
+    height: 200px;
+    width: 94%;
+    border-radius: var(--border-raduis);
+    padding: 0.5em;
+    margin: 0.5em;
+    border: none;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    outline: 0;
+    font-size: 1.5em;
+    resize: none;
+    scrollbar-width: none;
 }
 
 .buttons-container {
@@ -120,6 +136,7 @@ a {
     position: absolute;
     top: 5%;
     right: 5%;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 i {
@@ -129,7 +146,7 @@ i {
 
 .search-bar {
     position: absolute;
-    top: 5%;
+    top: 15%;
     left: 5%;
     width: 50%;
     height: fit-content;
@@ -140,7 +157,7 @@ i {
 
 .questions-container {
     position: absolute;
-    top: 20%;
+    top: 30%;
     display: flex;
     justify-content: space-around;
     align-content: center;
@@ -167,6 +184,7 @@ i {
     scrollbar-width: none;
     border-radius: var(--border-raduis);
     color: var(--color-background);
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .answer {
@@ -178,8 +196,11 @@ i {
     border-radius: var(--border-raduis);
     padding: 0.5em;
     margin: 0.5em;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  } */
+.search-icon {
+    margin: 0.5em;
+    padding: 0.5em;
+    /* cursor: pointer; */
+}
