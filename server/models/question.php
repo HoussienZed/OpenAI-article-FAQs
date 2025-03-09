@@ -31,6 +31,23 @@
                 return['status'=>'error', 'message'=>'Question cannot be deleted'];
             }
         }
+
+        public static function getQuestion($conn, $searchedQuestion) {
+
+            $getQuestionQuery = $conn->prepare('SELECT * FROM questions WHERE question LIKE ?');
+            $getQuestionQuery->bind_param('s', $searchedQuestion);
+            $getQuestionQuery->execute();
+
+            $result = $getQuestionQuery->get_result();
+
+            $response = [];
+
+            while($question = $result->fetch_assoc()) {
+                $response = [$question];
+            }
+
+            return $response;
+        }
     }
 
 ?>
