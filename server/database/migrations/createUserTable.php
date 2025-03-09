@@ -18,6 +18,6 @@
             }
         }
 
-    UsersTable::createUsersTable($conn);
+    /* UsersTable::createUsersTable($conn); */
 
 ?>
