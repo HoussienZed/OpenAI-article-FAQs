@@ -31,6 +31,27 @@
                 return['status'=>'error', 'message'=>'Question cannot be deleted'];
             }
         }
+
+        public static function getQuestion($conn, $searchedQuestion) {
+
+            $getQuestionQuery = $conn->prepare('SELECT * FROM questions WHERE question LIKE ?');
+            $searchedPhrase = '%' . $searchedQuestion . '%';
+            $getQuestionQuery->bind_param('s', $searchedPhrase);
+            $getQuestionQuery->execute();
+
+            $result = $getQuestionQuery->get_result();
+
+            $response = [];
+
+            if($result->num_rows > 0) {
+                while($question = $result->fetch_assoc()) {
+                    $response = [$question];
+                }
+                return $response;
+            } else {
+                return ['result'=>'No related question found'];
+            }
+        }
     }
 
 ?>
