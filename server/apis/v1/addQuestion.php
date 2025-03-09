@@ -4,6 +4,8 @@
     header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
+    header('Content-Type: application/json');
+
     /* $conn = require '../config/connection.php'; */
     $conn = require 'C:/xampp/htdocs/article_FAQs/server/config/connection.php';
     require '../../models/question.php';
@@ -21,10 +23,11 @@
 
     if ($addedQuestion['status'] === 'success') {    
         $response = Insert::insertQuestion($conn, $question, $answer);
+        $result = ['status'=>'success', 'message'=>'question/answer added successfully'];
+        echo json_encode($result);
     } else {
-        return $addedQuestion['message'];
+        $result = ['status'=>'error', 'message'=>$addedQuestion['message']];
+        echo json_encode($result);
     }
-
-    echo json_encode($response);
 
 ?>

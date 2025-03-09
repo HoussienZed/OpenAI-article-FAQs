@@ -6,32 +6,33 @@
     <title>Add Question</title>
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
-<body>
+<body id="addQuestion">
     <div class="big-container">
         <div class="container">
             <div class="title">
                 <h1>Add Question</h1>
             </div>
 
-            <div class="signin-alert">
-                <h3>Error! Question not added</h3>
+            <div class="signin-alert" id="signUpAlertContainer">
+                <h3 id="signUpAlert">Error! Question not added</h3>
             </div>
             
-            <div>
-                <div class="signInForm">
-                    <form method="post">
-                        <input type="text" name="question" id="" placeholder="Question">
-                        <br>
-                        <textarea placeholder="Write answer"></textarea>
-                    </form>
-                </div>
-
-                <div class="buttons-container">
-                    <button type="submit"><a href="./index.html">Add Question</a></button>
-                </div>
-            </div>
+            
+            <div class="signInForm">
+                <form method="post">
+                    <input type="text" name="question" placeholder="Question">
+                    <br>
+                    <textarea name="answer" placeholder="Write answer"></textarea>
+                        
+                    <div class="buttons-container">
+                        <button type="submit">Add Question</button>
+                    </div>
+                </form>
+            </div>    
+            
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./Js/main.js"></script>
 </body>
 </html>

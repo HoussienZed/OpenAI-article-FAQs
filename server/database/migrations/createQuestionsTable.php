@@ -10,9 +10,9 @@
                 answer TEXT NOT NULL)';
 
             if ($conn->query($query) === true) {
-                echo 'Table created successfully';
+                return 'Table created successfully';
             } else {
-                echo 'Table not created' . $conn->error;
+                return 'Table not created' . $conn->error;
             }
         }
     }

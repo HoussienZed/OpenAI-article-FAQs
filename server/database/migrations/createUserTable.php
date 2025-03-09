@@ -11,9 +11,9 @@
                 password VARCHAR(255) NOT NULL);';
                     
                 if ($conn->query($query) === true) {
-                    echo 'Table users successfully added';
+                    return 'Table users successfully added';
                 } else {
-                    echo 'Error creating table: ' . $conn->error;
+                    return 'Error creating table: ' . $conn->error;
                 }
             }
         }
