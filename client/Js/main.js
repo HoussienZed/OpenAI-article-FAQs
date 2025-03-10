@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(result);
 
             if(result.status === 'success') {
+                localStorage.setItem('isSignedIn', 'true');
                 window.location.href = 'http://13.39.112.176/article_FAQs/client/home.html'
             } else {
                 console.log(result.message);
@@ -60,29 +61,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (document.body.id === 'addQuestion') {
-        document.addEventListener('submit', async (event) => {
-            event.preventDefault();
+        if (localStorage.getItem('isSignedIn' !== 'true')) {
+            window.location.href = 'http://13.39.112.176/article_FAQs/client/index.html';
+        } else {
+            document.addEventListener('submit', async (event) => {
+                event.preventDefault();
 
-            const formData = new FormData(event.target);
+                const formData = new FormData(event.target);
 
-            const response = await axios.post('http://13.39.112.176/article_FAQs/server/apis/v1/addQuestion.php',
-                formData , {
-                    headers: {
-                        'Content-Type' : 'multipart/form-data'
-                    }
-                } 
-            )
+                const response = await axios.post('http://13.39.112.176/article_FAQs/server/apis/v1/addQuestion.php',
+                    formData , {
+                        headers: {
+                            'Content-Type' : 'multipart/form-data'
+                        }
+                    } 
+                )
 
-            const result = response.data;
-            console.log(result);
+                const result = response.data;
+                console.log(result);
 
-            if (result.status === 'success'){
-                window.location.href = 'http://13.39.112.176/article_FAQs/client/home.html';
-            } else {
-                console.log(result.message);
-                signUpAlert.textContent = result.message;
-                signUpAlertContainer.style.display = 'block';
-            }
-        })
+                if (result.status === 'success'){
+                    window.location.href = 'http://13.39.112.176/article_FAQs/client/home.html';
+                } else {
+                    console.log(result.message);
+                    signUpAlert.textContent = result.message;
+                    signUpAlertContainer.style.display = 'block';
+                }
+            
+            })
+        }
     }
 })
