@@ -1,6 +1,11 @@
 const signUpAlert = document.getElementById('signUpAlert');
 const signUpAlertContainer = document.getElementById('signUpAlertContainer');
+const logOut = document.getElementById('logout');
 
+logOut.addEventListener('submit', () => {
+    localStorage.removeItem('isSignedIn');
+    window.location.href = 'http://13.39.112.176/article_FAQs/client/index.html'
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.body.id === 'signUp') {

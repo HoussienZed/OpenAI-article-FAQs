@@ -1,7 +1,5 @@
 <?php
 
-    session_start();
-
     /* $conn = require '../config/connection.php'; */ //this path didnt work dont know why
     $conn = require 'C:/xampp/htdocs/article_FAQs/server/config/connection.php';
 
@@ -52,7 +50,6 @@
             $hasheEnteredPassword = hash('sha256', $password);
 
             if($hasheEnteredPassword === $userHashedPassword) {
-                $_SESSION['userEmail'] = $email; 
                 return ['status'=>'success', 'message'=>'User logged in successfully'];
             } else {
                 return ['status'=>'error', 'message'=>'Email and password dont match'];
